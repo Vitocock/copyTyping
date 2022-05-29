@@ -1,0 +1,104 @@
+
+body {
+    background-color: grey;
+    font-family:monospace;
+    padding: 0;
+    margin: 0;
+}
+main {
+    margin: 2%;
+}
+
+header {
+    background-color: black;
+    color: beige;
+    margin: 0;
+}
+header h1 {
+    font-size: 210%;
+    padding: 1% 0.5%;
+    margin-top: 0;
+}
+header h1 span {
+    color: rgb(252, 252, 54);
+    text-transform: capitalize;
+    font-style: italic  ;
+}
+
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around   ;
+    align-items: center;
+}
+.keyboard div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: fit-content;
+}
+.key {
+    margin: 0.5%;
+    min-width: 60px;
+    min-height: 60px;
+    font-size: 220%;
+    font-family: monospace;
+    border: none;
+    border-radius: 5px;
+    transition: 100ms ease-in;
+}
+.spacebar {
+    display: block   ;
+    min-width: 300px;
+    min-height: 60px;
+}
+.pressed {
+    background-color: black;
+    color: blanchedalmond;
+
+}
+.input {
+    width: 95%;
+    margin: 0 2.5%;
+    padding: 0.5em ;
+    font-size: 200%;
+    font-family: monospace  ;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: rgb(220, 210, 210);
+    color: black;
+    border: none;
+    border-radius: 10px;
+    caret-color: rgb(18, 18, 18);
+    
+}
+.input:hover{
+    cursor: pointer;
+}
+input[type = text]:focus {
+    outline: none;
+}
+.word {
+    display: block;
+    box-sizing: border-box;
+    margin: 2% 2.5%;
+    padding: 0.2em ;
+    border-radius: 10px;
+    font-size: 300%;
+    font-weight: 300 ;
+    font-family: monospace;
+    text-align: center;
+    background-color: rgb(227, 207, 19);
+    color: black;       
+    transition: 0.5s;    
+}
+.win {
+    background-color: black;
+    color: rgb(252, 252, 54)    ;
+}
+.retry:hover {
+    background-color: black;
+    color: rgb(252, 252, 54);
+    cursor: pointer
+}
