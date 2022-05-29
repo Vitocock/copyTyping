@@ -47,7 +47,15 @@ const getPokemon = async (id) => {
     let pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
     pokemon = await pokemon.text()
     pokemon = JSON.parse(pokemon)
-    return pokemon.name
+    return pokemon
+}
+const getImg = (pokemon) => {
+    return pokemon.sprites.other['official-artwork']['front_default']
+}
+const displayPokemon = (pokemon) => {
+    const img = getImg(pokemon)
+    const imgElement = document.getElementById('pokemon-img')
+    imgElement.setAttribute('src', img)
 }
 
 window.onload = async () => {
@@ -56,8 +64,9 @@ window.onload = async () => {
     const word = document.getElementById('word')
 
     let count = 1;
-
-    word.innerText = await getPokemon(count)
+    let pokemon = await getPokemon(count)
+    displayPokemon(pokemon)
+    word.innerText = pokemon.name
 
     input.addEventListener('keypress', (event) => {
         const keyPressed = document.getElementById(event.key)
@@ -70,7 +79,9 @@ window.onload = async () => {
             word.classList.add('win');
             
             count += 1
-            word.innerText = await getPokemon(count)
+            pokemon = await getPokemon(count)
+            word.innerText = pokemon.name
+            displayPokemon(pokemon)
             input.value = ''
             
             setTimeout(() => {word.classList.remove('win')}, 1000)     
