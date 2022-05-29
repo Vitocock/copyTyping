@@ -45,6 +45,8 @@ header h1 span {
     width: fit-content;
 }
 .key {
+    background-color: rgb(239, 239, 239);
+    align-items: center;
     margin: 0.5%;
     min-width: 60px;
     min-height: 60px;

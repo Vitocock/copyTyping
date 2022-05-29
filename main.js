@@ -1,5 +1,5 @@
 const keyTemplate = (key) => {
-    const div = document.createElement('button')
+    const div = document.createElement('div')
     div.classList.add('key') 
     div.setAttribute('id', key)
     div.innerText = key
