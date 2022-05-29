@@ -43,16 +43,21 @@ const displayRetry = () => {
     const body = document.getElementsByTagName('body')[0]
     body.appendChild(a)
 }
+const getPokemon = async (id) => {
+    let pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+    pokemon = await pokemon.text()
+    pokemon = JSON.parse(pokemon)
+    return pokemon.name
+}
 
-window.onload = () => {
+window.onload = async () => {
     const keyboard = document.getElementById('keyboard');
     const input = document.getElementById('input');
     const word = document.getElementById('word')
 
-    let count = 0;
-    const wordList = ['hola', 'palabra', 'paralelepipedo', 'archipielago', ]
+    let count = 1;
 
-    word.innerText = wordList[count]
+    word.innerText = await getPokemon(count)
 
     input.addEventListener('keypress', (event) => {
         const keyPressed = document.getElementById(event.key)
@@ -60,20 +65,15 @@ window.onload = () => {
         setTimeout(() => {keyPressed.classList.remove('pressed')}, 100)
     })
 
-    input.addEventListener('keyup', (event) => {
-        if (wordList[count] == input.value) {
-            count += 1
-            if (wordList[count]) {
-                word.classList.add('win');
-                setTimeout(() => {word.classList.remove('win')}, 1000)
-                word.innerText = wordList[count]
+    input.addEventListener('keyup', async () => {
+        if (word.innerText == input.value) {
+            word.classList.add('win');
             
-            } else {
-                word.innerText = "Ganaste!!!"
-                word.classList.add('win')
-                displayRetry()
-            }
+            count += 1
+            word.innerText = await getPokemon(count)
             input.value = ''
+            
+            setTimeout(() => {word.classList.remove('win')}, 1000)     
         }
     })
 
