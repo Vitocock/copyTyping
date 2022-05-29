@@ -66,6 +66,7 @@ header h1 span {
 .input {
     width: 95%;
     margin: 0 2.5%;
+    margin-top: 2%;
     padding: 0.5em ;
     font-size: 200%;
     font-family: monospace  ;
@@ -87,7 +88,7 @@ input[type = text]:focus {
 .word {
     display: block;
     box-sizing: border-box;
-    margin: 2% 2.5%;
+    margin: 0 2.5%;
     padding: 0.2em ;
     border-radius: 10px;
     font-size: 300%;
