@@ -1,36 +1,54 @@
-
+:root {
+    --yellow : rgb(250, 227, 12);
+    --grey : rgb(244, 244, 244);
+}
 body {
-    background-color: grey;
+    background-color: rgb(216, 216, 216);
     font-family:monospace;
     padding: 0;
     margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 2fr 17fr 1fr;
+}
+body, html {
+    height: 100%;
+}
+.wrap {
+    grid-row: 2/3;
+}
+
+/*----------------           Header             --------------*/
+
+header {
+    grid-row: 1/2;
+    background-color: black;
+    color: rgb(239, 239, 239);
+    margin: 0;
+    height: fit-content;
+}
+header h1 {
+    font-size: 2rem;
+    padding: 1% 0.5%;
+    margin: 0 ;
+}
+header h1 span {
+    color: var(--yellow);
+    text-transform: capitalize;
+    font-style: italic  ;
+}
+
+/*-------------------------        Main (keyboard, word)        -------------------------*/
+main {
+    grid-row: 2/3;
 }
 .main-container {
+    margin-top: 3%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
-main {
-    margin: 2% 5%;
-}
-
-header {
-    background-color: black;
-    color: rgb(239, 239, 239);
-    margin: 0;
-}
-header h1 {
-    font-size: 210%;
-    padding: 1% 0.5%;
-    margin-top: 0;
-}
-header h1 span {
-    color: rgb(252, 252, 54);
-    text-transform: capitalize;
-    font-style: italic  ;
-}
-
 .keyboard {
     display: flex;
     flex-direction: column;
@@ -45,41 +63,77 @@ header h1 span {
     width: fit-content;
 }
 .key {
-    background-color: rgb(239, 239, 239);
+    background-color: var(--grey);
     align-items: center;
     margin: 0.5%;
-    min-width: 60px;
-    min-height: 60px;
+    min-width: 3.5rem;
+    min-height: 3.5rem;
     font-size: 220%;
     font-family: monospace;
-    border: none;
+    border: 4px var(--yellow)  solid;
     border-radius: 5px;
-    transition: 100ms ease-in;
+
 }
 .spacebar {
     display: block   ;
     min-width: 300px;
     min-height: 60px;
 }
-.pressed {
-    background-color: black;
-    color:rgb(239, 239, 239);
+.word {
+    display: block;
+    box-sizing: border-box;
+    margin: 0 2.5%;
+    margin-top: 2.5%;
+    padding: 0.2em ;
+    border-radius: 10px;
+    font-size: 300%;
+    font-weight: 300 ;
+    font-family: monospace;
+    text-align: center;
+    background-color: var(--yellow);
+    color: black;       
+    transition: 0.3s;    
 }
+
+.pokemon-img-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left:5% ;
+}
+.pokemon-img-container img {
+    width: 20rem;
+}
+/*---------------------            Key clases             ----------------------*/
+.win {
+    background-color: black;
+    color:var(--yellow);
+}
+.retry:hover {
+    background-color: black;
+    color: var(--yellow);
+    cursor: pointer
+}
+.pressed {
+    background-color: var(--yellow);
+    color:var(--grey);
+}
+
+/*-----------------------        Input           ---------------------------*/
+
 .input {
     width: 95%;
     margin: 0 2.5%;
-    margin-top: 2%;
     padding: 0.5em ;
     font-size: 200%;
     font-family: monospace  ;
     text-align: center;
     box-sizing: border-box;
-    background-color: rgb(239, 239, 239);
+    background-color: var(--grey);
     color: black;
     border: none;
-    border-radius: 10px;
-    caret-color: rgb(18, 18, 18);
-    
+    border-radius: 10px;    
 }
 .input:hover{
     cursor: pointer;
@@ -87,32 +141,32 @@ header h1 span {
 input[type = text]:focus {
     outline: none;
 }
-.word {
-    display: block;
-    box-sizing: border-box;
-    margin: 0 2.5%;
-    padding: 0.2em ;
-    border-radius: 10px;
-    font-size: 300%;
-    font-weight: 300 ;
-    font-family: monospace;
-    text-align: center;
-    background-color: rgb(227, 207, 19);
-    color: black;       
-    transition: 0.5s;    
+
+/*--------------------        Footer          ----------------------*/
+
+footer {
+    width: 100%;
+    background-color: black;    
+    justify-content: center;
+    grid-row: 3/4;
+
 }
-.win {
-    background-color: black;
-    color: rgb(252, 252, 54)    ;
-}
-.retry:hover {
-    background-color: black;
-    color: rgb(252, 252, 54);
-    cursor: pointer
-}
-.pokemon-img-container {
+footer ul {
+    margin: 0;
+    padding: 1%;
+    list-style: none;
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
+}
+footer ul li {
+    margin: 0 1%;
+}
+footer ul li img {
+    filter: brightness(0%) invert(1);   
+    transition: 0.3s ;
+}
+footer ul li img:hover{
+    filter: brightness(100%);
 }

@@ -84,7 +84,7 @@ window.onload = async () => {
             displayPokemon(pokemon)
             input.value = ''
             
-            setTimeout(() => {word.classList.remove('win')}, 1000)     
+            setTimeout(() => {word.classList.remove('win')}, 300)     
         }
     })
 
