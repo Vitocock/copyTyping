@@ -30,7 +30,7 @@ const genKeyboard = () => {
             keyboardRow = createKeyboardRow()
         }
     }
-    fragment.appendChild(createSpaceBar(    ))
+    fragment.appendChild(createSpaceBar())
     keyboard.appendChild(fragment)
 }
 const displayRetry = () => {
@@ -57,14 +57,16 @@ const displayPokemon = (pokemon) => {
     const imgElement = document.getElementById('pokemon-img')
     imgElement.setAttribute('src', img)
 }
+const getRandomInt = (max, min) => {
+    return Math.floor(Math.random() * (max - min) + min)
+}
 
 window.onload = async () => {
     const keyboard = document.getElementById('keyboard');
     const input = document.getElementById('input');
     const word = document.getElementById('word')
 
-    let count = 1;
-    let pokemon = await getPokemon(count)
+    let pokemon = await getPokemon(getRandomInt(1, 898))
     displayPokemon(pokemon)
     word.innerText = pokemon.name
 
@@ -78,8 +80,7 @@ window.onload = async () => {
         if (word.innerText == input.value) {
             word.classList.add('win');
             
-            count += 1
-            pokemon = await getPokemon(count)
+            pokemon = await getPokemon(getRandomInt(1, 898))
             word.innerText = pokemon.name
             displayPokemon(pokemon)
             input.value = ''
